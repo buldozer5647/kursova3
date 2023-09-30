@@ -9,6 +9,12 @@
     color: #000;
 }
 
+/* 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+HEADER
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
+
 header {
     background-color: #333;
     color: #fff;
@@ -79,4 +85,72 @@ header nav ul li {
 
 .li-xp-amount {
     font-weight: 700;
+}
+
+/* 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+FORM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
+
+.form-for-tasks {
+    display: flex;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.container {
+    width: 60%;
+    margin-left: 50px
+}
+
+.container h1 {
+    display: inline;
+    position: relative;
+    padding-right: 20px;
+    top: 4.5px;
+    text-transform: uppercase;
+}
+
+.container li {
+    list-style-type: none;
+}
+
+.container label {
+    text-transform: uppercase;
+}
+
+.submit-input {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    width: 150px;
+    height: 33px;
+    /* padding: 10px 30px; */
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.submit-input:hover {
+    color: #F6EB85;
+    transform: scaleX(1.05)
+}
+
+#submit-tasks {
+    float: right;
+    margin-right: 80px;
+    margin-top: 30px;
+}
+
+.crossed-out {
+    text-decoration: line-through;
+}
+
+.checkbox-item {
+    padding: 10px;
+
+    cursor: pointer;
 }
