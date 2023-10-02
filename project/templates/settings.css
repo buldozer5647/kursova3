@@ -83,5 +83,6 @@ h1 {
 
 .submit-btn:hover {
     filter: drop-shadow(0px 3px 5px #000);
+    background-color: #F6EB85;
     font-size: 18.5px;
 }
