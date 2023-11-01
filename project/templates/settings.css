@@ -15,13 +15,14 @@ h1 {
 }
 
 .container {
-    width: 70%;
+    width: 60%;
     padding: 20px;
     margin-left: auto;
     margin-right: auto;
 
     display: flex;
     justify-content: center;
+    align-items: center;
 
     font-size: 18px;
 }
@@ -55,7 +56,7 @@ h1 {
 
 .input-div {
     display: inline;
-    width: 50%;
+    width: 70%;
     padding-left: 20px;
 }
 
@@ -65,7 +66,7 @@ h1 {
 }
 
 .submit-btn {
-    width: 40%;
+    width: 30%;
     height: 30px;
 
     float: right;
@@ -85,4 +86,39 @@ h1 {
     filter: drop-shadow(0px 3px 5px #000);
     background-color: #F6EB85;
     font-size: 18.5px;
+}
+
+@media screen and (max-width: 860px) {
+    .container {
+        flex-direction: column;
+        justify-content: center;
+        width: 90%;
+    }
+
+    .profile-svg {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-div a {
+        font-size: 16px;
+    }
+
+    .profile-div {
+        margin-bottom: 20px;
+    }
+
+    .input-div {
+        padding: 0;
+    }
+
+    .input-but-better {
+        width: 100%;
+        height: 30px;
+    }
+
+    .submit-btn {
+        width: 100px;
+        margin: 0 auto;
+    }
 }
