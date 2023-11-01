@@ -9,6 +9,26 @@
     color: #000;
 }
 
+.task-container {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 /* 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 HEADER
@@ -71,7 +91,7 @@ header nav ul li {
     filter: drop-shadow(1px 1px);
 }
 
-.li-xp-amount {
+.xp-amount {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -126,14 +146,26 @@ FORM
     text-transform: uppercase;
     width: 150px;
     height: 33px;
-    /* padding: 10px 30px; */
     cursor: pointer;
     transition: 0.5s;
 }
 
 .submit-input:hover {
     color: #F6EB85;
-    transform: scaleX(1.05)
+    /* transform: scaleX(1.05) */
+}
+
+.submit-input.disabled {
+    background-color: rgb(60, 60, 60);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    width: 150px;
+    height: 33px;
+    cursor: none;
+
+    pointer-events: none;
 }
 
 #submit-tasks {
@@ -170,7 +202,7 @@ svg {
         height: 50px;
     }
     
-    .li-xp-amount {
+    .xp-amount {
         height: 30px;
         width: 70px;
 

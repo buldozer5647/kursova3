@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" type="text/css" href="home.css">
+    <link rel="stylesheet" type="text/css" href="styles/home.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -29,7 +30,7 @@
                     </a>
                 </li>
 
-                <li class="li-xp-amount">1080 XP</li>
+                <li class="xp-amount"><span class="xp-amount-value">0</span>&nbsp;XP</li>
                 
                 <li>
                     <a href="#">
@@ -42,6 +43,14 @@
         </nav>
     </header>
 
+    <form action="POST" class="task-container">
+        <div class="task-form">
+            <input type="text" placeholder="Task Name" class="add-task-name">
+            <input type="text" placeholder="Task Description" class="add-task-desc">
+            <input type="submit" value="Submit" class="add-task-btn">
+        </div>
+    </form>
+
     <!-- 
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         The Form
@@ -53,26 +62,26 @@
             <div class="container">
                 <h1>Your tasks</h1>
 
-                <input type="submit" value="Add task" id="add-task" class="submit-input"><br>
+                <input type="button" value="Add task" id="add-task" class="submit-input"><br>
                 
-                <ul>
+                <ul class="task-list">
                     <li>
                         <input type="checkbox" id="task1" class="checkbox-item">
                         <label for="task1" id="label1">Task 1</label>
                         <br>
-                        <span id="task1">Fugiat velit eu officia esse Lorem. Qui amet exercitation enim deserunt labore magna exercitation velit irure in.</span>
+                        <span id="task1-info">Fugiat velit eu officia esse Lorem. Qui amet exercitation enim deserunt labore magna exercitation velit irure in.</span>
                     </li>
                     <li>
                         <input type="checkbox" id="task2" class="checkbox-item">
                         <label for="task2" id="label2">Task 2</label>
                         <br>
-                        <span id="task2">Fugiat velit eu officia esse Lorem. Qui amet exercitation enim deserunt labore magna exercitation velit irure in.</span>
+                        <span id="task2-info">Fugiat velit eu officia esse Lorem. Qui amet exercitation enim deserunt labore magna exercitation velit irure in.</span>
                     </li>
                     <li>
                         <input type="checkbox" id="task3" class="checkbox-item">
                         <label for="task3" id="label3">Task 3</label>
                         <br>
-                        <span id="task3">Fugiat velit eu officia esse Lorem. Qui amet exercitation enim deserunt labore magna exercitation velit irure in.</span>
+                        <span id="task3-info">Fugiat velit eu officia esse Lorem. Qui amet exercitation enim deserunt labore magna exercitation velit irure in.</span>
                     </li>
                 </ul>
 
@@ -87,21 +96,6 @@
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      -->
 
-    <script>
-        // Add event listeners to checkboxes to toggle the 'crossed-out' class
-        document.querySelectorAll('input[type="checkbox"]').forEach(function (checkbox) {
-            checkbox.addEventListener('change', function () {
-                const label = document.querySelector('label[for="' + checkbox.id + '"]');
-                const span = document.querySelector('span[id="' + checkbox.id + '"]');
-                if (checkbox.checked) {
-                    label.classList.add('crossed-out');
-                    span.classList.add('crossed-out');
-                } else {
-                    label.classList.remove('crossed-out');
-                    span.classList.remove('crossed-out');
-                }
-            });
-        });
-    </script>
+    <script src="scripts/home.js"></script>
 </body>
 </html>
