@@ -41,7 +41,7 @@ header h2 {
     justify-content: center;
     align-items: center;
 
-    width: 40%;
+    width: 50%;
     height: 400px;
 
     margin-left: auto;
@@ -53,7 +53,7 @@ header h2 {
 .birth-input,
 .email-input,
 .password-input {
-    width: 50%;
+    width: 400px;
     margin-bottom: 10px;
 
     padding: 10px;
@@ -62,11 +62,11 @@ header h2 {
 }
 
 .bottom-div {
-    width: 50%;
+    width: 100%;
     margin-top: 5px;
     
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -88,4 +88,23 @@ header h2 {
 .input-submit:hover {
     color: #F6EB85;
     transform: scaleX(1.05)
+}
+
+@media screen and (max-width: 860px) {
+    header {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .bottom-div a {
+        margin-right: 10px;
+    }
+
+    .name-input,
+    .nickname-input,
+    .birth-input,
+    .email-input,
+    .password-input {
+        width: 300px;
+    }
 }
