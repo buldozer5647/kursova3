@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" type="text/css" href="styles/register.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
@@ -15,9 +16,9 @@
 
     <section>
         <form method="POST" class="log-in-form">
-            <input class="name-input" type="email" name="input-email" required placeholder="Name">
-            <input class="nickname-input" type="email" name="input-email" required placeholder="Nickname">
-            <input class="birth-input" type="email" name="input-email" required placeholder="Date of birth">
+            <input class="name-input" type="text" name="input-email" required placeholder="Name">
+            <input class="nickname-input" type="text" name="input-email" required placeholder="Nickname">
+            <input class="birth-input" type="date" name="input-email" required placeholder="Date of birth">
             <input class="email-input" type="email" name="input-email" required placeholder="Email">
             <input class="password-input" type="password" name="input-password" required placeholder="Password">
 
@@ -27,5 +28,7 @@
             </div>
         </form>
     </section>
+
+    <script src="scripts/register.js"></script>
 </body>
 </html>
