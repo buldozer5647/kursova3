@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings</title>
     <link rel="stylesheet" type="text/css" href="styles/settings.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 </head>
 <body>
     <h1>Profile settings</h1>
@@ -18,28 +19,30 @@
         </div>
 
         <div class="input-div">
-            <label for="name">Name:</label>
+            <label for="name-input">Name:</label>
             <br>
-            <input class="input-but-better" type="text" id="name" name="name" required><br><br>
+            <input class="input-but-better" type="text" id="name-input" name="name" required><br><br>
             
-            <label for="nickname">Nickname:</label>
+            <label for="nickname-input">Nickname:</label>
             <br>
-            <input class="input-but-better" type="text" id="nickname" name="nickname" required><br><br>
+            <input class="input-but-better" type="text" id="nickname-input" name="nickname" required><br><br>
             
-            <label for="dob">Date of Birth:</label>
+            <label for="dob-input">Date of Birth:</label>
             <br>
-            <input class="input-but-better" type="date" id="dob" name="dob" required><br><br>
+            <input class="input-but-better" type="date" id="dob-input" name="dob" required><br><br>
             
-            <label for="email">Email:</label>
+            <label for="email-input">Email:</label>
             <br>
-            <input class="input-but-better" type="email" id="email" name="email" required><br><br>
+            <input class="input-but-better" type="email" id="email-input" name="email" required><br><br>
             
-            <label for="password">Password:</label>
+            <label for="password-input">Password:</label>
             <br>
-            <input class="input-but-better" type="password" id="password" name="password" required><br><br>
+            <input class="input-but-better" type="password" id="password-input" name="password" required><br><br>
 
             <input class="submit-btn" type="submit" value="Submit">
         </div>
     </form>
+
+    <script src="scripts/settings.js"></script>
 </body>
 </html>

@@ -9,6 +9,10 @@
     color: #000;
 }
 
+.error_message {
+    color: red;
+}
+
 h1 {
     text-align: center;
     margin-top: 20px;
