@@ -31,7 +31,7 @@ $(function() {
         if (isValidNickName(nickname.val())) validNickname = true;
         else nickname.parent().append("<p class='error_message'>Type correct nickname!</p>");
             
-        if (isEmail(email.val())) validEmail = true;
+        if (isValidEmail(email.val())) validEmail = true;
         else email.parent().append("<p class='error_message'>Type correct email!</p>");    
         
         if (isValidPassword(password.val())) validPassword = true;
@@ -43,11 +43,6 @@ $(function() {
     });
 });
 
-function isEmail(email) {
-    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    return regex.test(email);
-}
-
 function isValidName(name) {
     if (name.length > 50) return false;
     var regex = /^[A-Za-z\s]+$/;
@@ -58,6 +53,11 @@ function isValidNickName(nickname) {
     if (nickname.length > 20) return false;
     var regex = /^[A-Za-z0-9]+$/;
     return regex.test(nickname);
+}
+
+function isValidEmail(email) {
+    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return regex.test(email);
 }
 
 function isValidPassword(psswrd) {
