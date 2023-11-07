@@ -5,3 +5,7 @@ __pycache__
 db.sqlite3
 /static
 .DS_Store
+*.log
+*.pot
+db.sqlite3
+task_manager/
