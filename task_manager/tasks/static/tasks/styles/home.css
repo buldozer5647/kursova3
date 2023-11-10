@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+    font-family: 'Open Sans';
+    line-height: 1.5;
+    color: #000;
+}
+
+.task-container {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+FORM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
+
+.form-for-tasks {
+    display: flex;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.container {
+    width: 60%;
+    margin-left: 50px
+}
+
+.container h1 {
+    display: inline;
+    position: relative;
+    padding-right: 20px;
+    top: 4.5px;
+    text-transform: uppercase;
+}
+
+.container li {
+    list-style-type: none;
+}
+
+.container label {
+    text-transform: uppercase;
+}
+
+.submit-input {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    width: 150px;
+    height: 33px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.submit-input:hover {
+    color: #F6EB85;
+    /* transform: scaleX(1.05) */
+}
+
+.submit-input.disabled {
+    background-color: rgb(60, 60, 60);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    width: 150px;
+    height: 33px;
+    cursor: none;
+
+    pointer-events: none;
+}
+
+#submit-tasks {
+    float: right;
+    margin-right: 80px;
+    margin-top: 30px;
+}
+
+.crossed-out {
+    text-decoration: line-through;
+}
+
+.checkbox-item {
+    padding: 10px;
+
+    cursor: pointer;
+}
+
+svg {
+    width: 50px;
+    height: 50px;
+}
+
+@media screen and (max-width: 520px) {
+    .container {
+        margin: 0;
+
+        display: flex;
+        flex-direction: column;
+    }
+}

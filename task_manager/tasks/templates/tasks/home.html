@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'tasks/styles/home.css' %}">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    {% include "navbar.html" %}
+
+    <form action="POST" class="task-container">
+        <div class="task-form">
+            <input type="text" placeholder="Task Name" class="add-task-name">
+            <input type="text" placeholder="Task Description" class="add-task-desc">
+            <input type="submit" value="Submit" class="add-task-btn">
+        </div>
+    </form>
+
+    <!-- 
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        The Form
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     -->
+
+    <section>
+        <form action="POST" class="form-for-tasks">
+            <div class="container">
+                <h1>Your tasks</h1>
+
+                <input type="button" value="Add task" id="add-task" class="submit-input"><br>
+                
+                <ul class="task-list">
+                    <li>
+                        <input type="checkbox" id="task1" class="checkbox-item">
+                        <label for="task1" id="label1">Task 1</label>
+                        <br>
+                        <span id="task1-info">Fugiat velit eu officia esse Lorem. Qui amet exercitation enim deserunt labore magna exercitation velit irure in.</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="task2" class="checkbox-item">
+                        <label for="task2" id="label2">Task 2</label>
+                        <br>
+                        <span id="task2-info">Fugiat velit eu officia esse Lorem. Qui amet exercitation enim deserunt labore magna exercitation velit irure in.</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="task3" class="checkbox-item">
+                        <label for="task3" id="label3">Task 3</label>
+                        <br>
+                        <span id="task3-info">Fugiat velit eu officia esse Lorem. Qui amet exercitation enim deserunt labore magna exercitation velit irure in.</span>
+                    </li>
+                </ul>
+
+                <input type="submit" value="Submit" id="submit-tasks" class="submit-input"><br>
+            </div>
+        </form>
+    </section>
+
+    <!-- 
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        JS Code
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     -->
+
+    <script src="{% static 'tasks/scripts/home.js' %}"></script>
+</body>
+</html>
