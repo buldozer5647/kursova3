@@ -9,3 +9,4 @@ db.sqlite3
 *.pot
 db.sqlite3
 task_manager/
+.env
