@@ -34,13 +34,15 @@
                 <input type="button" value="Add task" id="add-task" class="submit-input"><br>
                 
                 <ul class="task-list">
-                    <li>
-                        <input type="checkbox" id="task1" class="checkbox-item">
-                        <label for="task1" id="label1">Task 1</label>
-                        <br>
-                        <span id="task1-info">Fugiat velit eu officia esse Lorem. Qui amet exercitation enim deserunt labore magna exercitation velit irure in.</span>
-                    </li>
-                    <li>
+                    {% for task in tasks %}
+                        <li>
+                            <input type="checkbox" id="{{ task.idhtml }}" class="checkbox-item">
+                            <label for="{{ task.idhtml }}" id="label-{{ task.idhtml }}">{{ task.title }}</label>
+                            <br>
+                            <span id="{{ task.idhtml }}-info">{{ task.description }}</span>
+                        </li>
+                    {% endfor %}
+                    <!-- <li>
                         <input type="checkbox" id="task2" class="checkbox-item">
                         <label for="task2" id="label2">Task 2</label>
                         <br>
@@ -51,7 +53,7 @@
                         <label for="task3" id="label3">Task 3</label>
                         <br>
                         <span id="task3-info">Fugiat velit eu officia esse Lorem. Qui amet exercitation enim deserunt labore magna exercitation velit irure in.</span>
-                    </li>
+                    </li> -->
                 </ul>
 
                 <input type="submit" value="Submit" id="submit-tasks" class="submit-input"><br>
