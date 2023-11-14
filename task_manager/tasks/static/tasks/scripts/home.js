@@ -49,29 +49,47 @@ $(function() {
         }       
     });
 
-    $(".add-task-btn").on("click", function(event) {
-        event.preventDefault();
+    // $(".add-task-btn").on("click", function(event) {
+    //     event.preventDefault();
 
-        let taskName = $(".add-task-name").val();
-        let taskDesc = $(".add-task-desc").val();
-        console.log(taskName);
-        console.log(taskDesc);
+    //     let taskName = $(".add-task-name").val();
+    //     let taskDesc = $(".add-task-desc").val();
+    //     console.log(taskName);
+    //     console.log(taskDesc);
         
-        $(".task-list").append(
-            `
-            <li>
-                <input type="checkbox" id="task${allCb.length+1}" class="checkbox-item">
-                <label for="task${allCb.length+1}" id="label${allCb.length+1}">${taskName}</label>
-                <br>
-                <span id="task${allCb.length+1}-info">${taskDesc}</span>
-            </li>
-            `
-        )
+    //     $(".task-list").append(
+    //         `
+    //         <li>
+    //             <input type="checkbox" id="task${allCb.length+1}" class="checkbox-item">
+    //             <label for="task${allCb.length+1}" id="label${allCb.length+1}">${taskName}</label>
+    //             <br>
+    //             <span id="task${allCb.length+1}-info">${taskDesc}</span>
+    //         </li>
+    //         `
+    //     )
 
-        $("body").css("background-color", "white");
-        addTaskForm.css("display", "none");
+    //     $("body").css("background-color", "white");
+    //     addTaskForm.css("display", "none");
         
-        allCb = $(".checkbox-item");
-        $("#submit-tasks").css({"background-color": "#000"});
+    //     allCb = $(".checkbox-item");
+    //     $("#submit-tasks").css({"background-color": "#000"});
+    // })
+
+    $(document).on("submit", "#add-task-form", function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            type: "POST",
+            url: "/create/",
+            data: {
+                title: $("#id_title").val(),
+                desc: $("#id_description").val(),
+                priority: $("#id_priority").val(),
+                csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val()
+            },
+            success: function() {
+
+            }
+        });
     })
 });
