@@ -1,6 +1,9 @@
 $(function() {
     var allCb = $(".checkbox-item");
     var addTaskForm = $(".task-container");
+
+    if (allCb.length === 0)
+        $("#submit-tasks").css({"background-color": "#403f3f"});
     
     $(".task-list").on("change", ".checkbox-item", function() {
         if ($(this).is(":checked")) {
@@ -15,20 +18,36 @@ $(function() {
 
     $("#submit-tasks").on("click", function(event) {
         event.preventDefault();
+        
+        let checkedCb = $(".checkbox-item:checked");
+        
+        if (checkedCb.length > 0) {
+            let arrOfIDhtml = []
 
-        if (allCb.length > 0) {
-            checkedCb = $(".checkbox-item:checked");
-            xpAmountVal = parseInt($(".xp-amount-value").text());
-            xpAmountVal += checkedCb.length;
+            for (let i = 0; i < checkedCb.length; i++)
+                arrOfIDhtml.push($(checkedCb[i]).prop("id"));
 
-            checkedCb.parent().remove();
-            $(".xp-amount-value").text(xpAmountVal);
-
-            allCb = $(".checkbox-item");
-            
-            if (allCb.length === 0) {
-                $(this).css({"background-color": "#403f3f"});
-            }
+            $.ajax({
+                type: "POST",
+                url: "delete/",
+                data: {
+                    idhtml: arrOfIDhtml,
+                    csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val()
+                },
+                traditional: true,
+                success: function(data) {
+                    let xpAmountVal = parseInt($(".xp-amount-value").text());
+                    xpAmountVal += checkedCb.length;
+        
+                    checkedCb.parent().remove();
+                    $(".xp-amount-value").text(xpAmountVal);
+        
+                    allCb = $(".checkbox-item");
+                    
+                    if (allCb.length == 0)
+                        $("#submit-tasks").css({"background-color": "#403f3f"});
+                }
+            });
         } else
             alert("There is no tasks to submit");
     });
@@ -48,47 +67,36 @@ $(function() {
             addTaskForm.css("display", "none");
         }       
     });
-
-    // $(".add-task-btn").on("click", function(event) {
-    //     event.preventDefault();
-
-    //     let taskName = $(".add-task-name").val();
-    //     let taskDesc = $(".add-task-desc").val();
-    //     console.log(taskName);
-    //     console.log(taskDesc);
-        
-    //     $(".task-list").append(
-    //         `
-    //         <li>
-    //             <input type="checkbox" id="task${allCb.length+1}" class="checkbox-item">
-    //             <label for="task${allCb.length+1}" id="label${allCb.length+1}">${taskName}</label>
-    //             <br>
-    //             <span id="task${allCb.length+1}-info">${taskDesc}</span>
-    //         </li>
-    //         `
-    //     )
-
-    //     $("body").css("background-color", "white");
-    //     addTaskForm.css("display", "none");
-        
-    //     allCb = $(".checkbox-item");
-    //     $("#submit-tasks").css({"background-color": "#000"});
-    // })
-
+    
     $(document).on("submit", "#add-task-form", function(e) {
         e.preventDefault();
-
+        
         $.ajax({
             type: "POST",
-            url: "/create/",
+            url: "create/",
             data: {
                 title: $("#id_title").val(),
                 desc: $("#id_description").val(),
                 priority: $("#id_priority").val(),
                 csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val()
             },
-            success: function() {
-
+            success: function(idhtml) {
+                $(".task-list").append(
+                    `
+                    <li>
+                        <input type="checkbox" id="${idhtml}" class="checkbox-item">
+                        <label for="${idhtml}" id="label-${idhtml}">${$("#id_title").val()}</label>
+                        <br>
+                        <span id="${idhtml}-info">${$("#id_description").val()}</span>
+                    </li>
+                    `
+                )
+        
+                $("body").css("background-color", "white");
+                addTaskForm.css("display", "none");
+                
+                allCb = $(".checkbox-item");
+                $("#submit-tasks").css({"background-color": "#000"});
             }
         });
     })

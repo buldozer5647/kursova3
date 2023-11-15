@@ -8,9 +8,6 @@ def home(request):
 
     tasks = Task.objects.all()
 
-    for task in tasks:
-        task.idhtml = task.id.hex[:8]
-
     context = {
         "tasks": tasks,
         "form": form,
@@ -27,4 +24,13 @@ def create(request):
         new_task = Task(title=title, description=desc, priority=priority)
         new_task.save()
 
-        return HttpResponse(title + "task has been added")
+        return HttpResponse(new_task.idhtml)
+    
+def delete(request):
+    if request.method == "POST":
+        idhtml = request.POST.getlist("idhtml")
+
+        for id in idhtml:
+            Task.objects.filter(idhtml=id).delete()
+
+        return HttpResponse("Great")

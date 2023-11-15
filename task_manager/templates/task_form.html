@@ -3,8 +3,6 @@
 <form action="" method="GET" class="task-container" id="add-task-form">
     {% csrf_token %}
     <div class="task-form">
-        <!-- <input type="text" placeholder="Task Name" class="add-task-name">
-        <input type="text" placeholder="Task Description" class="add-task-desc"> -->
         {{ form }}
         <input type="submit" value="Submit" class="add-task-btn">
     </div>
