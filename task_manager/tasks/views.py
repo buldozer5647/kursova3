@@ -28,9 +28,15 @@ def create(request):
     
 def delete(request):
     if request.method == "POST":
-        idhtml = request.POST.getlist("idhtml")
+        idhtml = request.POST["idhtml"]
 
-        for id in idhtml:
-            Task.objects.filter(idhtml=id).delete()
+        if type(idhtml) == str:
+            Task.objects.filter(idhtml=idhtml).delete()
+            
+            return HttpResponse("Great String")
+        elif type(idhtml) == list:
+            for id in idhtml:
+                Task.objects.filter(idhtml=id).delete()
 
-        return HttpResponse("Great")
+            return HttpResponse("Great List")
+

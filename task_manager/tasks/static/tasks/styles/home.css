@@ -42,6 +42,21 @@ FORM
     padding: 20px;
 }
 
+.task-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-list div {
+    display: inline;
+    width: 90%;
+}
+
+.task-list li {
+    word-wrap: break-word;
+}
+
 .container {
     width: 60%;
     margin-left: 50px
