@@ -28,12 +28,15 @@ $(function() {
                 arrOfIDhtml.push($(checkedCb[i]).prop("id"));
 
             $.ajax({
-                type: "POST",
-                url: "delete/",
-                data: {
-                    idhtml: arrOfIDhtml,
-                    csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val()
+                method: "DELETE",
+                url: "c_d/",
+                headers: {
+                    "X-Requested-With": "XMLHttpRequest",
+                    "X-CSRFToken": $("input[name=csrfmiddlewaretoken]").val()
                 },
+                data: JSON.stringify({
+                    idhtml: arrOfIDhtml
+                }),
                 traditional: true,
                 success: function(data) {
                     let xpAmountVal = parseInt($(".xp-amount-value").text());
@@ -72,14 +75,17 @@ $(function() {
         e.preventDefault();
         
         $.ajax({
-            type: "POST",
-            url: "create/",
-            data: {
+            method: "POST",
+            url: "c_d/",
+            headers: {
+                "X-Requested-With": "XMLHttpRequest",
+                "X-CSRFToken": $("input[name=csrfmiddlewaretoken]").val(),
+            },
+            data: JSON.stringify({
                 title: $("#id_title").val(),
                 desc: $("#id_description").val(),
-                priority: $("#id_priority").val(),
-                csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val()
-            },
+                priority: $("#id_priority").val()
+            }),
             success: function(idhtml) {
                 $(".task-list").append(
                     `
@@ -126,12 +132,15 @@ $(function() {
         let idhtml = $(this).siblings().eq(0).find("input").prop("id");
 
         $.ajax({
-            type: "POST",
-            url: "delete/",
-            data: {
-                idhtml: idhtml,
-                csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val()
+            method: "DELETE",
+            url: "c_d/",
+            headers: {
+                "X-Requested-With": "XMLHttpRequest",
+                "X-CSRFToken": $("input[name=csrfmiddlewaretoken]").val(),
             },
+            data: JSON.stringify({
+                idhtml: idhtml
+            }),
             success: function(data) {
                 btn.parent().remove();
     

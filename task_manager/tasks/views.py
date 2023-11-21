@@ -1,5 +1,8 @@
+import json
+
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
+from django.views.decorators.csrf import csrf_protect
 from .models import Task
 from .forms import TaskForm
 
@@ -15,20 +18,21 @@ def home(request):
 
     return render(request, "tasks/home.html", context=context)
 
-def create(request):
+def create_delete(request):
     if request.method == "POST":
-        title = request.POST["title"]
-        desc = request.POST["desc"]
-        priority = request.POST["priority"]
+        data = json.load(request)
+        title = data.get("title")
+        desc = data.get("desc")
+        priority = data.get("priority")
 
         new_task = Task(title=title, description=desc, priority=priority)
         new_task.save()
 
         return HttpResponse(new_task.idhtml)
-    
-def delete(request):
-    if request.method == "POST":
-        idhtml = request.POST["idhtml"]
+
+    if request.method == "DELETE":
+        data = json.load(request)
+        idhtml = data.get("idhtml")
 
         if type(idhtml) == str:
             Task.objects.filter(idhtml=idhtml).delete()
@@ -39,4 +43,3 @@ def delete(request):
                 Task.objects.filter(idhtml=id).delete()
 
             return HttpResponse("Great List")
-
