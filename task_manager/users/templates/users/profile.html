@@ -4,16 +4,25 @@
 
 {% block content %}
 
-<div>
-    <p>{{ profile.user.username }}</p>
-    <p>{{ profile.user.email }}</p>
-    <p>{{ profile.bio }}</p>
-    {% if profile.profile_image %}
-        <img src="{{ profile.profile_image.url }}" alt="Profile Image">
-    {% else %}
-        <p>no mange</p>
-        <img src="{% static 'images/profiles/default_pfp.png' %}" alt="">
-    {% endif %}
+<div class="profile-container">
+
+    <div class="profile-pfp">
+        {% if profile.profile_image %}
+            <img src="{{ profile.profile_image.url }}" alt="Profile Image">
+        {% else %}
+            <img class="profile-pfp" src="{% static 'images/profiles/default_pfp.png' %}" alt="">
+        {% endif %}
+    </div>
+
+    <div class="profile-info">
+        <div id="profile-xp-amount">{{ profile.xp_amount }} XP</div>
+        <p id="profile-username">{{ profile.user.username }}</p>
+        <p>{{ profile.user.first_name }} {{ profile.user.last_name }}</p>
+        <p><a href="mailto: {{ profile.user.email }}">{{ profile.user.email }}</a></p>
+        <p id="profile-about">About:</p>
+        <p>{{ profile.bio }}</p>
+    </div>
+    
 </div>
 
 {% endblock %}

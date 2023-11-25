@@ -9,7 +9,7 @@ class Profile(models.Model):
     profile_image = models.ImageField(null=True, blank=True, 
                                       default="profiles/default_pfp.png",
                                       upload_to="profiles/")
-    xp_amount = models.IntegerField(default=0, editable=False)
+    xp_amount = models.IntegerField(default=0)
 
     def __str__(self):
         return self.user.username
