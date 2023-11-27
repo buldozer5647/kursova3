@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+    font-family: 'Open Sans';
+    line-height: 1.5;
+    color: #000;
+}
+
+.error_message {
+    color: red;
+}
+
+/* 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+HEADER
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 30px 50px;
+
+    height: 100px;
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+}
+
+header h1 {
+    color: #fff;
+}
+
+header h2 {
+    color: #fff;
+}
+
+.log-in-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 50%;
+    height: 400px;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.name-input,
+.nickname-input,
+.birth-input,
+.email-input,
+.password-input {
+    width: 400px;
+    margin-bottom: 10px;
+
+    padding: 10px;
+
+    font-size: 16px;
+}
+
+.bottom-div {
+    width: 100%;
+    margin-top: 5px;
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.bottom-div a:hover {
+    color: #232323;
+}
+
+.input-submit {
+    padding: 5px 30px 5px 30px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+
+    transition: 0.5s;
+}
+
+.input-submit:hover {
+    color: #F6EB85;
+    transform: scaleX(1.05)
+}
+
+@media screen and (max-width: 860px) {
+    header {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .bottom-div a {
+        margin-right: 10px;
+    }
+
+    .name-input,
+    .nickname-input,
+    .birth-input,
+    .email-input,
+    .password-input {
+        width: 300px;
+    }
+}

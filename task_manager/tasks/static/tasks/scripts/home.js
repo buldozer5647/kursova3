@@ -35,7 +35,8 @@ $(function() {
                     "X-CSRFToken": $("input[name=csrfmiddlewaretoken]").val()
                 },
                 data: JSON.stringify({
-                    idhtml: arrOfIDhtml
+                    idhtml: arrOfIDhtml,
+                    add_xp: true
                 }),
                 traditional: true,
                 success: function(data) {
@@ -84,7 +85,8 @@ $(function() {
             data: JSON.stringify({
                 title: $("#id_title").val(),
                 desc: $("#id_description").val(),
-                priority: $("#id_priority").val()
+                priority: $("#id_priority").val(),
+                owns: $("#id_owns").val()
             }),
             success: function(idhtml) {
                 $(".task-list").append(
@@ -139,7 +141,8 @@ $(function() {
                 "X-CSRFToken": $("input[name=csrfmiddlewaretoken]").val(),
             },
             data: JSON.stringify({
-                idhtml: idhtml
+                idhtml: idhtml,
+                add_xp: false
             }),
             success: function(data) {
                 btn.parent().remove();

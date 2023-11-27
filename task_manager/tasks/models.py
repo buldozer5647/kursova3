@@ -1,5 +1,6 @@
 from django.db import models
 import uuid
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -8,6 +9,7 @@ class Task(models.Model):
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=2000, null=True, blank=True)
     idhtml = models.CharField(max_length=10, editable=False, default="123")
+    owns = models.ForeignKey(User, on_delete=models.CASCADE)
 
     L = "L"
     M = "M"

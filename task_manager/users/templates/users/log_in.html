@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'users/styles/log_in.css' %}">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <h1>Sticky Header</h1>
+        
+        <h2>Authentication</h2>
+    </header>
+
+    <section>
+        <form action="{% url 'loginPage' %}" method="POST" class="log-in-form">
+            {% csrf_token %}
+            <input class="username-input" type="text" name="username" required placeholder="Username">
+            <input class="password-input" type="password" name="password" required placeholder="Password">
+
+            <div class="bottom-div">
+                <a href="{% url 'registerPage' %}">Register</a>
+                <input class="input-submit" type="submit" name="input-submit" value="Submit">
+            </div>
+        </form>
+    </section>
+
+    <!-- <script src="{% static 'users/scripts/log_in.js' %}"></script> -->
+</body>
