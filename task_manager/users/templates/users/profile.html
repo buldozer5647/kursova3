@@ -21,6 +21,10 @@
         <p><a href="mailto: {{ profile.user.email }}">{{ profile.user.email }}</a></p>
         <p id="profile-about">About:</p>
         <p>{{ profile.bio }}</p>
+
+        {% if can_logout %}
+            <a href="{% url 'logoutPage' %}" style="margin-top: 25px;">Logout</a>
+        {% endif %}
     </div>
     
 </div>

@@ -20,7 +20,7 @@ def home(request):
 
     return render(request, "tasks/home.html", context=context)
 
-@login_required
+@login_required(login_url="user/login/")
 def create_delete(request):
     if request.method == "POST":
         data = json.load(request)
