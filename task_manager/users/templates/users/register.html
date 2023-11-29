@@ -16,22 +16,34 @@
         <h2>Authentication</h2>
     </header>
 
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
     <section>
-        <form method="POST" class="log-in-form">
+        <form action="{% url 'registerPage' %}" method="POST" class="log-in-form">
             {% csrf_token %}
-            <input class="name-input" type="text" name="input-email" required placeholder="Name">
+
+            {{ form.as_p }}
+            <!-- <input class="name-input" type="text" name="input-email" required placeholder="Name">
             <input class="nickname-input" type="text" name="input-email" required placeholder="Nickname">
             <input class="birth-input" type="date" name="input-email" required placeholder="Date of birth">
             <input class="email-input" type="email" name="input-email" required placeholder="Email">
             <input class="password-input" type="password" name="input-password" required placeholder="Password">
-
+            -->
             <div class="bottom-div">
                 <a href="{% url 'loginPage' %}">Log In</a>
                 <input class="input-submit" type="submit" name="input-submit" value="Submit">
             </div>
+
+
         </form>
     </section>
 
-    <script src="{% static 'users/scripts/register.js' %}"></script>
+    <!-- <script src="{% static 'users/scripts/register.js' %}"></script> -->
 </body>
 </html>
