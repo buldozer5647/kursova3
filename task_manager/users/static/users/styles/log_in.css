@@ -87,6 +87,20 @@ header h2 {
     transform: scaleX(1.05)
 }
 
+.messages {
+    list-style-type: none;
+    text-align: center;
+}
+.messages .error {
+    background-color: #ffbaba;
+    display:inline-block;
+}
+
+.messages .success {
+    background-color: #baffca;
+    display:inline-block;
+}
+
 @media screen and (max-width: 860px) {
     header {
         display: flex;

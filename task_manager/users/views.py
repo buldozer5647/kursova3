@@ -32,10 +32,10 @@ def loginUser(request):
         username = request.POST["username"]
         password = request.POST["password"]
 
-        try:
-            user = User.objects.get(username=username)
-        except:
-            messages.error(request, "Username does not exist!")
+        # try:
+        #     user = User.objects.get(username=username)
+        # except:
+        #     messages.error(request, "Username does not exist!")
         
         user = authenticate(request, username=username, password=password)
 
@@ -55,9 +55,10 @@ def registerUser(request):
         form = CustomUserCreationForm(request.POST)
 
         if form.is_valid():
-            # user = form.save(commit=False)
-            # user.username = user.username.lower()
-            form.save()
+            user = form.save(commit=False)
+            user.first_name = user.first_name.capitalize()
+            user.last_name = user.last_name.capitalize()
+            user.save()
 
             messages.success(request, "User account was created!")
 

@@ -28,13 +28,28 @@
         <form action="{% url 'registerPage' %}" method="POST" class="log-in-form">
             {% csrf_token %}
 
-            {{ form.as_p }}
-            <!-- <input class="name-input" type="text" name="input-email" required placeholder="Name">
-            <input class="nickname-input" type="text" name="input-email" required placeholder="Nickname">
-            <input class="birth-input" type="date" name="input-email" required placeholder="Date of birth">
-            <input class="email-input" type="email" name="input-email" required placeholder="Email">
-            <input class="password-input" type="password" name="input-password" required placeholder="Password">
-            -->
+            <!-- {{ form.as_p }} -->
+                <input class="name-input" type="text" name="first_name" required placeholder="First Name">
+                <input class="name-input" type="text" name="last_name" required placeholder="Last Name">
+                <input class="nickname-input" type="text" name="username" required placeholder="Username">
+                <input class="email-input" type="email" name="email" required placeholder="Email">
+                <input class="password-input" type="password" name="password1" required placeholder="Password">
+                <input class="password-input" type="password" name="password2" required placeholder="Password confirmation"> 
+                <!-- <input class="birth-input" type="date" name="input-email" required placeholder="Date of birth">-->
+           
+                {% if form.errors %}
+                    <div class="alert alert-danger">
+                        <strong>Error(s) occurred:</strong>
+                        <ul>
+                            {% for field, error_list in form.errors.items %}
+                                {% for error in error_list %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
             <div class="bottom-div">
                 <a href="{% url 'loginPage' %}">Log In</a>
                 <input class="input-submit" type="submit" name="input-submit" value="Submit">

@@ -50,6 +50,7 @@ header h2 {
 
     margin-left: auto;
     margin-right: auto;
+    margin-top: 20px;
 }
 
 .name-input,
@@ -92,6 +93,15 @@ header h2 {
 .input-submit:hover {
     color: #F6EB85;
     transform: scaleX(1.05)
+}
+
+.messages {
+    list-style-type: none;
+    text-align: center;
+}
+
+.alert-danger li {
+    background-color: #ffbaba;
 }
 
 @media screen and (max-width: 860px) {
