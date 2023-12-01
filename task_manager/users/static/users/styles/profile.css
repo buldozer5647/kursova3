@@ -16,6 +16,20 @@
 
 .profile-pfp {
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-pfp a {
+    background-color: #333;
+
+    text-decoration: none;
+    color: #fff;
+
+    margin-top: 10px;
+    padding: 10px 40px;
+    border-radius: 5px;
 }
 
 .profile-pfp img {

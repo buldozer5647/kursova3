@@ -12,6 +12,10 @@
         {% else %}
             <img class="profile-pfp" src="{% static 'images/profiles/default_pfp.png' %}" alt="">
         {% endif %}
+        
+        {% if can_logout %}
+            <a href="#">Edit profile</a>
+        {% endif %}
     </div>
 
     <div class="profile-info">

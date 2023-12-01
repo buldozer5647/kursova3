@@ -1,0 +1,79 @@
+{% extends "main.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="container_for_lb">
+    <h1>Leaderboard</h1>
+
+    <ul>
+        {% for profile in profiles %}
+            {% if profile.user.username == your_username %}
+                <li class="list-line" id="list-you">
+                    <a href="{% url 'profile' %}">
+                        <div class="for_img">
+                            <img src="{{ profile.profile_image.url }}" alt="">
+                        </div>
+                    </a>
+                    
+                    <a href="{% url 'profile' %}"><span class="list-order-number">{{ forloop.counter }}.</span></a>
+                    <a href="{% url 'profile' %}"><span class="list-name">{{ profile.user.username }}</span></a>
+                    <span class="list-xp">{{ profile.xp_amount }} XP</span>
+                </li>
+                {% else %}
+                <li class="list-line">
+                    <a href="{% url 'profile' username=profile.user.username %}">
+                        <div class="for_img">
+                            <img src="{{ profile.profile_image.url }}" alt="">
+                        </div>
+                    </a>
+
+                    <a href="{% url 'profile' username=profile.user.username %}"><span class="list-order-number">{{ forloop.counter }}.</span></a>
+                    <a href="{% url 'profile' username=profile.user.username %}"><span class="list-name">{{ profile.user.username }}</span></a>
+                    <span class="list-xp">{{ profile.xp_amount }} XP</span>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+        <!-- <li id="list-you" class="list-line">
+            <svg class="profile-svg" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6">
+                <path stroke="#ccc" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd" />
+            </svg>
+
+            <span class="list-order-number">2.</span>
+            <span class="list-name">You</span>
+            <span class="list-xp">1080 XP</span>
+        </li>
+        
+        <li class="list-line">
+            <svg class="profile-svg" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6">
+                <path stroke="#ccc" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd" />
+            </svg>
+
+            <span class="list-order-number">3.</span>
+            <span class="list-name">Ira</span>
+            <span class="list-xp">1000 XP</span>
+        </li>
+
+        <li class="list-line">
+            <svg class="profile-svg" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6">
+                <path stroke="#ccc" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd" />
+            </svg>
+
+            <span class="list-order-number">4.</span>
+            <span class="list-name">Anonymous</span>
+            <span class="list-xp">500 XP</span>
+        </li>
+
+        <li class="list-line">
+            <svg class="profile-svg" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6">
+                <path stroke="#ccc" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd" />
+            </svg>
+
+            <span class="list-order-number">5.</span>
+            <span class="list-name">Batyj</span>
+            <span class="list-xp">100 XP</span>
+        </li> -->
+    </ul>
+</div>
+{% endblock %}

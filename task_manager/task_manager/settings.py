@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     "tasks.apps.TasksConfig",
-    "users.apps.UsersConfig"
+    "users.apps.UsersConfig",
+    "leaderboard.apps.LeaderboardConfig"
 ]
 
 MIDDLEWARE = [
@@ -128,6 +129,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "tasks", "static"),
     os.path.join(BASE_DIR, "users", "static"),
+    os.path.join(BASE_DIR, "leaderboard", "static"),
     os.path.join(BASE_DIR, "static")
 ]
 
