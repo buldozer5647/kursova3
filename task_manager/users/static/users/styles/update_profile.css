@@ -1,0 +1,87 @@
+.messages {
+    list-style-type: none;
+    text-align: center;
+}
+.messages .error {
+    background-color: #ffbaba;
+    display:inline-block;
+}
+
+.messages .success {
+    background-color: #baffca;
+    display:inline-block;
+}
+
+.update-user-form {
+    align-items: center;
+    
+    font-size: 17px;
+}
+
+.update-user-form p {
+    margin-bottom: 5px;
+}
+
+.update-user-form textarea {
+    width: 70%;
+
+    border: 2px solid #000;
+    border-radius: 3px;
+}
+
+.update-user-form .form-group {
+    width: 100%;
+    margin-bottom: 10px;
+    
+    padding: 10px;
+}
+
+.update-user-form .form-group a {
+    color: #02d002;
+}
+
+label[for="id_profile_image"] {
+    display: block;
+}
+
+label[for="id_bio"] {
+    display: block;
+}
+
+.update-user-form input[type="text"] {
+    border: 2px solid #000;
+    border-radius: 3px;
+
+    
+}
+
+.update-user-form .sbt-btn {
+    padding: 5px 30px 5px 30px;
+    margin-top: 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+    
+    transition: 0.5s;
+}
+.update-user-form .sbt-btn:hover {
+    color: #F6EB85;
+    transform: scaleX(1.05)
+}
+
+.update-user-container {
+    margin: 0 auto;
+    width: 50%;
+}
+
+@media only screen and (max-width: 599px) {
+    .update-user-container {
+        font-size: 20px;
+    }
+
+    .update-user-form {
+        font-size: 18px;
+    }
+}

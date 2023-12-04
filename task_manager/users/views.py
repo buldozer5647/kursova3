@@ -4,11 +4,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, UserUpdateForm, UserProfileUpdateForm
 
 # Create your views here.
 
-@login_required(login_url="login/")
+@login_required(login_url="user/login/")
 def user(request, username=""):
     if username != "":
         pr = get_object_or_404(Profile, user__username=username)
@@ -68,3 +68,39 @@ def registerUser(request):
 
     context = {"form": form}
     return render(request, "users/register.html", context=context)
+
+@login_required(login_url="user/login/")
+def update_profile(request):
+    user_initial_dict = {
+        "first_name": request.user.first_name,
+        "last_name": request.user.last_name,
+    }
+
+    user_profile_initial_dict = {
+        "bio": request.user.profile.bio,
+        "profile_image": request.user.profile.profile_image
+    }
+
+    print(user_profile_initial_dict)
+
+    if request.method == "POST":
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        user_profile_form = UserProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+
+        if user_form.is_valid() and user_profile_form.is_valid():
+            user_form.save()
+            user_profile_form.save()
+            messages.success(request, "Profile updated successfully!")
+    
+            return redirect("profile")
+    else:
+        user_form = UserUpdateForm(initial=user_initial_dict)
+        user_profile_form = UserProfileUpdateForm(initial=user_profile_initial_dict)
+
+    context = {
+        "user_form": user_form,
+        "user_profile_form": user_profile_form,
+        "xp_amount": request.user.profile.xp_amount
+    }
+
+    return render(request, "users/update_profile.html", context=context)

@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<div class="update-user-container">
+<h1>Update Profile</h1>
+<form class="update-user-form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="form-group ">
+        {{ user_form.as_p }}
+    </div>
+
+    {% for field in user_profile_form %}
+        <div class="form-group">
+            {{ field.label_tag }}
+            {{ field }}
+        </div>
+    {% endfor %}
+
+
+
+
+
+    <input type="submit" class="sbt-btn" value="Save changes">
+
+</form>
+</div>
+
+{% endblock %}
