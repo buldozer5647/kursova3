@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class Task(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
     title = models.CharField(max_length=200)
-    description = models.CharField(max_length=2000, null=True, blank=True)
+    description = models.TextField(max_length=2000, null=True, blank=True)
     idhtml = models.CharField(max_length=10, editable=False, default="123")
     owns = models.ForeignKey(User, on_delete=models.CASCADE)
 

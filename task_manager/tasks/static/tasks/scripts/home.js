@@ -60,14 +60,14 @@ $(function() {
         $(".add-task-name").val("")
         $(".add-task-desc").val("")
         event.stopPropagation();
-        $("body").css("background-color", "grey");
+        $(".grey-div").css("display", "block");
         allCb.css("color", "red");
         addTaskForm.css("display", "inline");
     });
     
     $(document).on("click", function(event) {
         if (!$(event.target).closest(addTaskForm).length) {
-            $("body").css("background-color", "white");
+            $(".grey-div").css("display", "none");
             addTaskForm.css("display", "none");
         }       
     });
@@ -89,9 +89,18 @@ $(function() {
                 owns: $("#id_owns").val()
             }),
             success: function(idhtml) {
+                let priority = $("#id_priority").val();
+                let li_color = "";
+                if (priority == "L")
+                    li_color = "#98FB98";
+                if (priority == "M")
+                    li_color = "#ffffa7";
+                if (priority == "H")
+                    li_color = "#FFC0CB";
+                
                 $(".task-list").append(
                     `
-                    <li>
+                    <li style="background-color: ${li_color}; border-radius: 5px; padding: 0 5px; margin: 3px 0;">
                         <div>
                             <input type="checkbox" id="${idhtml}" class="checkbox-item">
                             <label for="${idhtml}" id="label-${idhtml}">${$("#id_title").val()}</label>
@@ -118,7 +127,7 @@ $(function() {
                 $("#id_description").val("");
                 $("#id_priority").val("L");
         
-                $("body").css("background-color", "white");
+                $(".grey-div").css("display", "none");
                 addTaskForm.css("display", "none");
                 
                 allCb = $(".checkbox-item");

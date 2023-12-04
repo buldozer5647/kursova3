@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% block title %}{{profile.user.username}}{% endblock %}
+
 {% block content %}
 
 {% if messages %}
@@ -16,11 +18,13 @@
 
 
     <div class="profile-pfp">
-        {% if profile.profile_image %}
-            <img src="{{ profile.profile_image.url }}" alt="Profile Image">
-        {% else %}
-            <img class="profile-pfp" src="{% static 'images/profiles/default_pfp.png' %}" alt="">
-        {% endif %}
+        <div class="profile-pfp-size">
+            {% if profile.profile_image %}
+                <img src="{{ profile.profile_image.url }}" alt="Profile Image">
+            {% else %}
+                <img class="profile-pfp" src="{% static 'images/profiles/default_pfp.png' %}" alt="">
+            {% endif %}
+        </div>
         
         {% if can_logout %}
             <a href="{% url 'updateProfile' %}">Edit profile</a>
@@ -36,7 +40,7 @@
         <p>{{ profile.bio }}</p>
 
         {% if can_logout %}
-            <a href="{% url 'logoutPage' %}" style="margin-top: 25px;">Logout</a>
+            <a href="{% url 'logoutPage' %}" style="margin-top: 25px; color: #f94449;">Logout</a>
         {% endif %}
     </div>
     
