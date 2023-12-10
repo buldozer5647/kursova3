@@ -9,3 +9,5 @@ db.sqlite3
 *.pot
 db.sqlite3
 .env
+
+.docx
